@@ -1,8 +1,12 @@
+import { Box } from '@mui/material'
 import React from 'react'
+import LoginForm from './components/Auth/LoginForm'
 
 function Login() {
   return (
-    <div>Login</div>
+    <Box>
+      <LoginForm />
+    </Box>
   )
 }
 
