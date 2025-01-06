@@ -1,13 +1,12 @@
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import Footer from "./components/Layouts/Footer";
 
 function Home() {
   return (
     <Box>
       <Typography variant="h4" sx={{ textAlign: "center" }}>
-        Hello
+        Crabank
       </Typography>
       <Box
         sx={{
@@ -29,7 +28,6 @@ function Home() {
           </Link>
         </Button>
       </Box>
-      <Footer />
     </Box>
   );
 }
