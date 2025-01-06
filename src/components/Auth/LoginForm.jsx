@@ -102,8 +102,6 @@ function LoginForm() {
                 size="small"
                 sx={{
                   mb: 2,
-                  bgcolor: "#728996",
-                  "&:hover": { bgcolor: "#607080" },
                   width: "100%",
                 }}
                 variant="contained"
@@ -115,9 +113,8 @@ function LoginForm() {
               </Button>
               <Button
                 size="small"
+                color="primary"
                 sx={{
-                  bgcolor: "#4caf50",
-                  "&:hover": { bgcolor: "#388e3c" },
                   width: "100%",
                 }}
                 variant="contained"

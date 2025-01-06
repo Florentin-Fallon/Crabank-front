@@ -1,33 +1,14 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
+import CustomTabs from "./components/Layouts/CustomTabs";
 
 function Home() {
   return (
     <Box>
-      <Typography variant="h4" sx={{ textAlign: "center" }}>
+      <Typography variant="h5" sx={{ ml: 2, mt: 2 }}>
         Crabank
       </Typography>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "10px",
-          marginTop: "20px",
-        }}
-      >
-        <Button variant="contained" color="primary">
-          <Link
-            to="/login"
-            style={{
-              textDecoration: "none",
-              color: "inherit",
-            }}
-          >
-            Login
-          </Link>
-        </Button>
-      </Box>
+      <CustomTabs />
     </Box>
   );
 }

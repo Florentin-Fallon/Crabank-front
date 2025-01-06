@@ -154,7 +154,7 @@ function RegisterForm() {
               sx={{
                 display: "flex",
                 alignItems: "center",
-                mb: 2,
+                mb: 3,
                 width: "100%",
               }}
             >
@@ -179,19 +179,10 @@ function RegisterForm() {
                 gap: 1.5,
               }}
             >
-              <Button
-                variant="contained"
-                sx={{ bgcolor: "#728996" }}
-                size="small"
-                type="submit"
-              >
+              <Button variant="contained" size="small" type="submit">
                 Soumettre
               </Button>
-              <Button
-                variant="contained"
-                size="small"
-                sx={{ bgcolor: "#728996" }}
-              >
+              <Button variant="contained" size="small">
                 <Link
                   to="/login"
                   style={{ textDecoration: "none", color: "white" }}
