@@ -39,7 +39,7 @@ function AccountTransactionCard({account}) {
                 boxSizing: "border-box",
             }}
         >
-            <Typography sx={{textAlign: "center", mb: 1}}>
+            <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
                 Dernières Transactions
             </Typography>
             <Box>

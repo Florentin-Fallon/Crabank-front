@@ -13,15 +13,40 @@ function AccountCreditCardCard({account}) {
 
     useEffect(() => {
         async function fetchAsync() {
-            let card = await getAccountFirstCard(account.bban)
-            let lastNumbers = card.numbers.split(' ')[3]
+            let firstCard = await getAccountFirstCard(account.bban)
+            if (firstCard === undefined) {
+                setCard(null)
+                return
+            }
+            let lastNumbers = firstCard.numbers.split(' ')[3]
 
-            setCard(card)
+            setCard(firstCard)
             setNumbers(lastNumbers)
         }
 
         if (account !== undefined) fetchAsync()
     }, [account]);
+
+    if (card === null) {
+        return (
+            <Box
+                sx={{
+                    border: 1,
+                    borderColor: "#D4D4D4",
+                    borderRadius: 2,
+                    p: 2,
+                    mt: 2,
+                    width: 360,
+                    height: 180,
+                    boxSizing: "border-box",
+                }}
+            >
+                <Typography variant="h6" sx={{ mb: 6, fontWeight: "bold" }}>
+                    Aucune carte associée
+                </Typography>
+            </Box>
+        );
+    }
 
     if (card === undefined) {
         return (

@@ -89,8 +89,8 @@ function CustomTabs() {
                         disableRipple
                         icon={
                             <img
-                                src={Card}
-                                alt="Card"
+                                src={ArrowUp}
+                                alt="ArrowUp"
                                 style={{
                                     width: 24,
                                     height: 24,
@@ -111,8 +111,8 @@ function CustomTabs() {
                         disableRipple
                         icon={
                             <img
-                                src={ArrowUp}
-                                alt="ArrowUp"
+                                src={ArrowRotate}
+                                alt="ArrowRotate"
                                 style={{
                                     width: 24,
                                     height: 24,
@@ -133,8 +133,8 @@ function CustomTabs() {
                         disableRipple
                         icon={
                             <img
-                                src={ArrowRotate}
-                                alt="ArrowRotate"
+                                src={Card}
+                                alt="Card"
                                 style={{
                                     width: 24,
                                     height: 24,
