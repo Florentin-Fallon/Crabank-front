@@ -22,7 +22,7 @@ function AccountTransactionCard() {
       </Typography>
       <Box>
         <Box sx={{ display: "flex", gap: 2, my: 1 }}>
-          <Typography sx={{ color: "red" }}>- 5000€</Typography>
+          <Typography sx={{ color: "red" }}>- 5 000€</Typography>
           <Typography sx={{ textAlign: "center" }}>Actions SNCF</Typography>
           <Typography>
             <CheckOutlinedIcon fontSize="small" sx={{ color: "green" }} />
