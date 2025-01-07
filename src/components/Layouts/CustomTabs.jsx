@@ -17,7 +17,12 @@ import AccountCreditLimitCard from "../Cards/AccountCreditLimitCard";
 import AccountAdvisorCard from "../Cards/AccountAdvisorCard";
 import AccountTransactionCard from "../Cards/AccountTransactionCard";
 import {getCurrentAccount} from "../../Api/api";
+<<<<<<< HEAD
 import AccountCreditCardCard from "../Cards/AccountCreditCardCard";
+=======
+import {AbcRounded} from "@mui/icons-material";
+import Information from "../Information/Information";
+>>>>>>> 50ec6a3a (Added Account Information page)
 
 function CustomTabs() {
     const [value, setValue] = React.useState("0");
@@ -154,6 +159,31 @@ function CustomTabs() {
                             },
                         }}
                     />
+                    <Tab
+                        disableRipple
+                        icon={
+                            <img
+                                src={User}
+                                alt="User"
+                                style={{
+                                    width: 24,
+                                    height: 24,
+                                    borderRadius: "50%",
+                                    backgroundColor: value === "4" ? "#e1eefc" : "transparent",
+                                    padding: 15,
+                                }}
+                            />
+                        }
+                        value="4"
+                        sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            "&:hover": {
+                                backgroundColor: "#fff",
+                            },
+                        }}
+                    />
                 </Tabs>
                 <TabPanel value="0" sx={{
                     margin: 0,
@@ -179,6 +209,9 @@ function CustomTabs() {
                 <TabPanel value="1">Virements</TabPanel>
                 <TabPanel value="2">Historique de transactions</TabPanel>
                 <TabPanel value="3">Cartes</TabPanel>
+                <TabPanel sx={{
+                    width: "100%",
+                }} value="4"><Information account={account}/></TabPanel>
             </TabContext>
             <Box
                 sx={{
@@ -190,24 +223,6 @@ function CustomTabs() {
                     gap: 2,
                 }}
             >
-                <Tab
-                    icon={
-                        <img
-                            src={User}
-                            alt="User"
-                            style={{
-                                width: 24,
-                                height: 24,
-                            }}
-                        />
-                    }
-                    sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        opacity: 1
-                    }}
-                />
                 <Link to="/login">
                     <Tab
                         icon={
