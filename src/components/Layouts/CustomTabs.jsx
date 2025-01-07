@@ -17,12 +17,9 @@ import AccountCreditLimitCard from "../Cards/AccountCreditLimitCard";
 import AccountAdvisorCard from "../Cards/AccountAdvisorCard";
 import AccountTransactionCard from "../Cards/AccountTransactionCard";
 import {getCurrentAccount} from "../../Api/api";
-<<<<<<< HEAD
 import AccountCreditCardCard from "../Cards/AccountCreditCardCard";
-=======
 import {AbcRounded} from "@mui/icons-material";
 import Information from "../Information/Information";
->>>>>>> 50ec6a3a (Added Account Information page)
 
 function CustomTabs() {
     const [value, setValue] = React.useState("0");

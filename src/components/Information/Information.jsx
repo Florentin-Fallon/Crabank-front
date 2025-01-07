@@ -19,6 +19,10 @@ export function Information({account}) {
                 <Box sx={{
                     display: "flex",
                     flexDirection: "column",
+                    border: 1,
+                    borderColor: "#D4D4D4",
+                    borderRadius: 2,
+                    p: 2,
                 }}>
                     <Typography variant={"h6"}>Informations personnelles</Typography>
                     <Typography sx={{marginTop: "20px"}}>Nom complet :</Typography>
@@ -31,6 +35,10 @@ export function Information({account}) {
                 <Box sx={{
                     display: "flex",
                     flexDirection: "column",
+                    border: 1,
+                    borderColor: "#D4D4D4",
+                    borderRadius: 2,
+                    p: 2,
                 }}>
                     <Typography variant={"h6"}>Informations de compte</Typography>
                     <Typography sx={{marginTop: "20px"}}>Numéro de compte :</Typography>
@@ -41,11 +49,35 @@ export function Information({account}) {
                 <Box sx={{
                     display: "flex",
                     flexDirection: "column",
+                    border: 1,
+                    borderColor: "#D4D4D4",
+                    borderRadius: 2,
+                    p: 2,
                 }}>
                     <Typography variant={"h6"}>Informations financières</Typography>
-                    <Typography sx={{marginTop: "20px"}}>Solde actuel : {account.amount}</Typography>
+                    <Typography sx={{marginTop: "20px"}}>Solde actuel : {account.amount} {account.currency}</Typography>
                     <Typography>Découvert : <span style={{color: "green"}}>Autorisé</span></Typography>
                     <Typography>Taux d'intérêt : -2%</Typography>
+                </Box>
+            </Box>
+            <Box sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-around",
+                marginTop: "100px",
+                alignItems: "left",
+            }}>
+                <Box sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    border: 1,
+                    borderColor: "#D4D4D4",
+                    borderRadius: 2,
+                    p: 2,
+                }}>
+                    <Typography variant={"h6"}>Type de compte</Typography>
+                    <Typography sx={{marginTop: "20px"}}>Nature du compte : Compte Coutant </Typography>
+                    <Typography>Devise : {account.currency}</Typography>
                 </Box>
             </Box>
         </Box>
