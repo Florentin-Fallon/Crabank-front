@@ -11,6 +11,11 @@ import ArrowRotate from "../../Assets/Arrow-Rotate.svg";
 import User from "../../Assets/User.svg";
 import Power from "../../Assets/Power.svg";
 import { Link } from "react-router-dom";
+import AccountAmountCard from "../Cards/AccountAmountCard";
+import AccountInformationsCard from "../Cards/AccountInformationsCard";
+import AccountCreditLimiteCard from "../Cards/AccountCreditLimiteCard";
+import AccountAdvisorCard from "../Cards/AccountAdvisorCard";
+import AccountTransactionCard from "../Cards/AccountTransactionCard";
 
 function CustomTabs() {
   const [value, setValue] = React.useState("0");
@@ -134,7 +139,22 @@ function CustomTabs() {
             }}
           />
         </Tabs>
-        <TabPanel value="0">Accueil</TabPanel>
+        <TabPanel value="0">
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: 2,
+              justifyContent: "center",
+            }}
+          >
+            <AccountAmountCard />
+            <AccountInformationsCard />
+            <AccountCreditLimiteCard />
+            <AccountAdvisorCard />
+            <AccountTransactionCard />
+          </Box>
+        </TabPanel>
         <TabPanel value="1">Virements</TabPanel>
         <TabPanel value="2">Historique de transactions</TabPanel>
         <TabPanel value="3">Cartes</TabPanel>
