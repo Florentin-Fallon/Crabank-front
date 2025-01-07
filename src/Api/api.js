@@ -65,6 +65,10 @@ async function getAccountCards(bban) {
     return await apiRequest("GET", `/account/${bban}/cards`);
 }
 
+async function getAccountFirstCard(bban) {
+    return (await getAccountCards(bban))[0]
+}
+
 // Create a card and associate it with an account by BBAN
 async function createAccountCard(bban, cardData) {
     return await apiRequest("POST", `/account/${bban}/cards`, cardData);
@@ -131,5 +135,6 @@ export {
     getCurrencies,
     getTransactionByGuid,
     createTransaction,
-    getCurrentAccount
+    getCurrentAccount,
+    getAccountFirstCard
 };

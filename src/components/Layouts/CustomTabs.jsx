@@ -17,6 +17,7 @@ import AccountCreditLimitCard from "../Cards/AccountCreditLimitCard";
 import AccountAdvisorCard from "../Cards/AccountAdvisorCard";
 import AccountTransactionCard from "../Cards/AccountTransactionCard";
 import {getCurrentAccount} from "../../Api/api";
+import AccountCreditCardCard from "../Cards/AccountCreditCardCard";
 
 function CustomTabs() {
     const [value, setValue] = React.useState("0");
@@ -172,6 +173,7 @@ function CustomTabs() {
                         <AccountCreditLimitCard account={account}/>
                         <AccountAdvisorCard account={account}/>
                         <AccountTransactionCard account={account}/>
+                        <AccountCreditCardCard account={account}/>
                     </Box>
                 </TabPanel>
                 <TabPanel value="1">Virements</TabPanel>
