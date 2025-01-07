@@ -1,8 +1,17 @@
-import { Box, Typography } from "@mui/material";
+import {Box, Skeleton, Typography} from "@mui/material";
 import React from "react";
 
-function AccountInformationsCard() {
-  return (
+function AccountInformationsCard({account}) {
+    if (account === undefined) {
+        return (
+            <Skeleton variant="rectangular" sx={{
+                mt: 2,
+                borderRadius: 2,
+            }} width={360} height={180}/>
+        )
+    }
+
+    return (
     <Box
       sx={{
         border: 1,
@@ -20,11 +29,11 @@ function AccountInformationsCard() {
       </Typography>
       <Typography variant="body2">Nom</Typography>
       <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
-        Compte de la République
+          {account.name}
       </Typography>
       <Typography variant="body2">Titulaire du compte</Typography>
       <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-        Emmanuel Macron
+          {account.ownerName}
       </Typography>
     </Box>
   );

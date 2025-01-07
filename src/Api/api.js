@@ -110,6 +110,10 @@ async function createTransaction(transactionData) {
     return await apiRequest("POST", "/transactions", transactionData);
 }
 
+async function getCurrentAccount() {
+    return (await getAccounts())[0]
+}
+
 export {
     getAccounts,
     createAccount,
@@ -127,4 +131,5 @@ export {
     getCurrencies,
     getTransactionByGuid,
     createTransaction,
+    getCurrentAccount
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabPanel from "@mui/lab/TabPanel";
@@ -13,16 +13,27 @@ import Power from "../../Assets/Power.svg";
 import {Link} from "react-router-dom";
 import AccountAmountCard from "../Cards/AccountAmountCard";
 import AccountInformationsCard from "../Cards/AccountInformationsCard";
-import AccountCreditLimiteCard from "../Cards/AccountCreditLimiteCard";
+import AccountCreditLimitCard from "../Cards/AccountCreditLimitCard";
 import AccountAdvisorCard from "../Cards/AccountAdvisorCard";
 import AccountTransactionCard from "../Cards/AccountTransactionCard";
+import {getCurrentAccount} from "../../Api/api";
 
 function CustomTabs() {
     const [value, setValue] = React.useState("0");
+    const [account, setAccount] = useState()
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
+    useEffect(() => {
+        async function fetchAccountAsync() {
+            let account = await getCurrentAccount()
+            setAccount(account)
+        }
+
+        fetchAccountAsync()
+    }, []);
 
     return (
         <Box
@@ -156,11 +167,11 @@ function CustomTabs() {
                             justifyContent: "center",
                         }}
                     >
-                        <AccountAmountCard/>
-                        <AccountInformationsCard/>
-                        <AccountCreditLimiteCard/>
-                        <AccountAdvisorCard/>
-                        <AccountTransactionCard/>
+                        <AccountAmountCard account={account}/>
+                        <AccountInformationsCard account={account}/>
+                        <AccountCreditLimitCard account={account}/>
+                        <AccountAdvisorCard account={account}/>
+                        <AccountTransactionCard account={account}/>
                     </Box>
                 </TabPanel>
                 <TabPanel value="1">Virements</TabPanel>

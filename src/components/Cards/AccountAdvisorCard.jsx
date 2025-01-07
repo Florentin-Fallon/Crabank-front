@@ -1,8 +1,17 @@
-import { Box, Typography } from "@mui/material";
+import {Box, Skeleton, Typography} from "@mui/material";
 import React from "react";
 
-function AccountAdvisorCard() {
-  return (
+function AccountAdvisorCard({account}) {
+    if (account === undefined) {
+        return (
+            <Skeleton variant="rectangular" sx={{
+                mt: 2,
+                borderRadius: 2,
+            }} width={360} height={180}/>
+        )
+    }
+
+    return (
     <Box
       sx={{
         border: 1,
@@ -16,16 +25,16 @@ function AccountAdvisorCard() {
       }}
     >
       <Typography variant="h6" sx={{ mb: 6, fontWeight: "bold" }}>
-        Conseillère
+        Conseiller
       </Typography>
       <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-        Brigitte Macron
+          {account.advisor.firstName} {account.advisor.lastName}
       </Typography>
       <Typography variant="body2" color="text.secondary">
-        01 23 45 67 89
+          {account.advisor.phoneNumber}
       </Typography>
       <Typography variant="body2" color="text.secondary">
-        brigitte-vacances78@elysee.fr
+          {account.advisor.email}
       </Typography>
     </Box>
   );
