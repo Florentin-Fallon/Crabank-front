@@ -12,13 +12,15 @@ const defaultTheme = createTheme({
     secondary: {
       main: "#D4D4D4",
     },
+    success: {
+      main: "#006BD6",
+    },
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          textTransform: "capitalize",
-          borderRadius: 5,
+          borderRadius: 7,
         },
       },
     },

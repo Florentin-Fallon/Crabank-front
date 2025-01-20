@@ -3,12 +3,8 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
-import PasswordIcon from "@mui/icons-material/Password";
 import { Link } from "react-router-dom";
-
+import Logo from "../../Assets/Logo.svg";
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,108 +25,129 @@ function LoginForm() {
         height: "100vh",
       }}
     >
-      <Card
+      <Box
         sx={{
-          maxWidth: { xs: 250, sm: 300 },
-          minWidth: { xs: 250, sm: 300 },
+          width: { xs: "80%", sm: "40%", md: "20%", lg: "20%" },
           padding: 5,
-          boxShadow: 3,
           borderRadius: 5,
         }}
       >
-        <CardContent>
-          <Typography
-            variant="h5"
-            align="center"
-            sx={{ fontWeight: "regular", fontFamily: "Roboto" }}
-            gutterBottom
-          >
-            Connexion
-          </Typography>
-          <form
-            onSubmit={handleSubmit}
-            style={{
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <img src={Logo} style={{ height: 70 }} />
+        </Box>
+        <Typography
+          variant="h5"
+          align="center"
+          sx={{
+            color: "#006BD6",
+            mb: 3,
+            fontSize: 30,
+          }}
+          gutterBottom
+        >
+          Connexion
+        </Typography>
+        <form
+          onSubmit={handleSubmit}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Box
+            sx={{
               display: "flex",
-              flexDirection: "column",
               alignItems: "center",
+              justifyContent: "center",
+              mb: 2,
+              width: "120%",
             }}
           >
-            <Box
+            <TextField
+              label="Email"
+              variant="outlined"
+              color="success"
+              fullWidth
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "120%",
+            }}
+          >
+            <TextField
+              label="Mot de passe"
+              variant="outlined"
+              type="password"
+              color="success"
+              fullWidth
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "column",
+              my: 0.5,
+              gap: 3,
+              width: "100%",
+            }}
+          >
+            <Button
+              size="small"
+              variant="contained"
+              type="submit"
+              fullWidth
               sx={{
-                display: "flex",
-                alignItems: "flex-end",
-                justifyContent: "center",
-                mb: 2,
-                py: 1.5,
+                backgroundColor: "006BD6",
+                py: 0.5,
+                textTransform: "none",
                 width: "100%",
+                fontSize: 12,
+                borderRadius: 2,
+                "&:hover": {
+                  backgroundColor: "#006BD6",
+                },
               }}
             >
-              <AlternateEmailIcon sx={{ mr: 1, my: 0.5 }} />
-              <TextField
-                label="Email"
-                variant="standard"
-                color="success"
-                fullWidth
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </Box>
-            <Box
+              <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+                Se connecter
+              </Link>
+            </Button>
+            <Button
+              size="small"
+              color="primary"
+              fullWidth
+              variant="contained"
               sx={{
-                display: "flex",
-                alignItems: "flex-end",
-                justifyContent: "center",
-                mb: 2,
+                backgroundColor: "#B3D1FF",
+                fontSize: 12,
+                textTransform: "none",
                 width: "100%",
+                color: "#0050A0",
               }}
             >
-              <PasswordIcon sx={{ mr: 1, my: 0.5 }} />
-              <TextField
-                label="Mot de passe"
-                variant="standard"
-                type="password"
-                color="success"
-                fullWidth
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </Box>
-            <Box sx={{ my: 2, width: "70%" }}>
-              <Button
-                size="small"
-                sx={{
-                  mb: 2,
-                  width: "100%",
-                }}
-                variant="contained"
-                type="submit"
+              <Link
+                to="/register"
+                style={{ textDecoration: "none", color: "#0050A0" }}
               >
-                <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-                  Se connecter
-                </Link>
-              </Button>
-              <Button
-                size="small"
-                color="primary"
-                sx={{
-                  width: "100%",
-                }}
-                variant="contained"
-                href="/register"
-              >
-                <Link
-                  to="/register"
-                  style={{ textDecoration: "none", color: "white" }}
-                >
-                  S'inscrire
-                </Link>
-              </Button>
-            </Box>
-          </form>
-        </CardContent>
-      </Card>
+                Créer un compte
+              </Link>
+            </Button>
+          </Box>
+        </form>
+      </Box>
     </Box>
   );
 }
