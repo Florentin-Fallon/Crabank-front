@@ -204,7 +204,13 @@ function CustomTabs() {
             <AccountInformationsCard account={account} />
             <AccountCreditLimitCard account={account} />
             <AccountAdvisorCard account={account} />
-            <AccountTransactionCard account={account} />
+            <Link
+              style={{ textDecoration: "none", color: "inherit" }}
+              to="#"
+              onClick={() => setValue("2")}
+            >
+              <AccountTransactionCard account={account} />
+            </Link>
             <AccountCreditCardCard account={account} />
           </Box>
         </TabPanel>
@@ -212,10 +218,10 @@ function CustomTabs() {
           <FormTransaction />
         </TabPanel>
         <TabPanel value="2">
-          <HistoryTransactions />
+          <HistoryTransactions account={account} />
         </TabPanel>
         <TabPanel value="3">
-          <CreditCard />
+          <CreditCard account={account} />
         </TabPanel>
         <TabPanel
           sx={{

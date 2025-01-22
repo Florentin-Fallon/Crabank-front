@@ -34,7 +34,7 @@ function RegisterForm() {
         }}
       >
         <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <img src={Logo} style={{ height: 70 }} />
+          <img src={Logo} alt="Logo" style={{ height: 70 }} />
         </Box>
         <Typography
           variant="h5"

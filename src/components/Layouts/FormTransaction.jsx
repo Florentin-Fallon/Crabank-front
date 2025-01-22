@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
 
-function FormTransaction() {
+function FormTransaction({ onTransaction }) {
+  const [iban, setIban] = useState("");
+  const [amount, setAmount] = useState("");
+
+  const handleTransaction = () => {
+    if (iban && amount) {
+      onTransaction({ iban, amount });
+      setIban("");
+      setAmount("");
+    }
+  };
+
   return (
     <Box>
       <Typography variant="h4" sx={{ fontWeight: "bold", mb: 2 }}>
@@ -15,12 +26,23 @@ function FormTransaction() {
           width: "150%",
         }}
       >
-        <TextField label="IBAN du destinataire" variant="outlined" />
-        <TextField label="Montant" variant="outlined" />
+        <TextField
+          label="IBAN du destinataire"
+          variant="outlined"
+          value={iban}
+          onChange={(e) => setIban(e.target.value)}
+        />
+        <TextField
+          label="Montant"
+          variant="outlined"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+        />
         <Box>
           <Button
             variant="contained"
             sx={{ width: "100%", textTransform: "none" }}
+            onClick={handleTransaction}
           >
             Confirmer
           </Button>
