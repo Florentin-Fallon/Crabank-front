@@ -1,5 +1,5 @@
 const BASE_URL =
-  "https://aad2-2a01-e0a-2bf-3d30-1b78-1dc8-a6dc-e6b2.ngrok-free.app"; // Replace with the actual base URL of the API
+  "https://7cca-2a01-e0a-2bf-3d30-1b78-1dc8-a6dc-e6b2.ngrok-free.app"; // Replace with the actual base URL of the API
 
 /**
  * Helper function to send HTTP requests.
@@ -26,7 +26,11 @@ async function apiRequest(method, endpoint, data = null) {
   const response = await fetch(`${BASE_URL}${endpoint}`, options);
 
   if (!response.ok) {
-    throw new Error(`Backend HTTP Error ${response.status}: ${(await response.json()).message}`);
+    throw new Error(
+      `Backend HTTP Error ${response.status}: ${
+        (await response.json()).message
+      }`
+    );
   }
 
   return await response.json();

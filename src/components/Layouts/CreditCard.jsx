@@ -106,8 +106,11 @@ function CreditCard({ account, setValue }) {
           </Box>
         )}
       </Box>
-      <Divider orientation="vertical" flexItem sx={{ mx: 2 }} />
-      <Box sx={{ width: "90%", ml: 30 }}>
+      <Divider orientation="vertical" flexItem sx={{ ml: 15 }} />
+      <Box sx={{ width: "90%", ml: 15 }}>
+        <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3 }}>
+          Mes plafonds
+        </Typography>
         {[
           {
             title: "Plafond de paiement mensuel",
