@@ -16,7 +16,7 @@ import AccountInformationsCard from "../Cards/AccountInformationsCard";
 import AccountCreditLimitCard from "../Cards/AccountCreditLimitCard";
 import AccountAdvisorCard from "../Cards/AccountAdvisorCard";
 import AccountTransactionCard from "../Cards/AccountTransactionCard";
-import { getCurrentAccount } from "../../Api/api";
+import { getCurrentAccount, getAccountCards } from "../../Api/api";
 import AccountCreditCardCard from "../Cards/AccountCreditCardCard";
 import Information from "../Information/Information";
 import FormTransaction from "./FormTransaction";
@@ -26,6 +26,7 @@ import CreditCard from "./CreditCard";
 function CustomTabs() {
   const [value, setValue] = React.useState("0");
   const [account, setAccount] = useState();
+  const [cards, setCards] = useState([]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -35,6 +36,11 @@ function CustomTabs() {
     async function fetchAccountAsync() {
       let account = await getCurrentAccount();
       setAccount(account);
+
+      if (account) {
+        const userCards = await getAccountCards(account.bban);
+        setCards(userCards);
+      }
     }
 
     fetchAccountAsync();
@@ -203,7 +209,7 @@ function CustomTabs() {
             <AccountAmountCard account={account} />
             <AccountInformationsCard account={account} />
             <AccountCreditLimitCard account={account} />
-            <AccountAdvisorCard account={account} />
+            <AccountAdvisorCard account={account} cards={cards} />
             <Link
               style={{ textDecoration: "none", color: "inherit" }}
               to="#"

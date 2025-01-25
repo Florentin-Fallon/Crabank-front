@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route} from "react-router-dom";
-import Home from './Home';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Home";
 import Login from "./Login";
 import Register from "./Register";
 
@@ -10,7 +10,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/information" element={<Information />} />
       </Routes>
     </BrowserRouter>
   );

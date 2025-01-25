@@ -1,16 +1,47 @@
 import React, { useState } from "react";
-import { Box, Typography, TextField, Button } from "@mui/material";
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Snackbar,
+  Alert,
+} from "@mui/material";
+import { createTransaction } from "../../Api/api";
 
 function FormTransaction({ onTransaction }) {
   const [iban, setIban] = useState("");
   const [amount, setAmount] = useState("");
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+  const [alertSeverity, setAlertSeverity] = useState("success");
 
-  const handleTransaction = () => {
+  const handleTransaction = async () => {
     if (iban && amount) {
-      onTransaction({ iban, amount });
-      setIban("");
-      setAmount("");
+      console.log("Données envoyées :", { iban, amount });
+      try {
+        await createTransaction({ iban, amount });
+        setAlertMessage("Transaction réussie !");
+        setAlertSeverity("success");
+        onTransaction({ iban, amount });
+      } catch (error) {
+        console.error("Erreur lors de la transaction :", error);
+        setAlertMessage("Erreur lors de la transaction !");
+        setAlertSeverity("error");
+      } finally {
+        setIban("");
+        setAmount("");
+        setSnackbarOpen(true);
+      }
+    } else {
+      setAlertMessage("Veuillez remplir tous les champs !");
+      setAlertSeverity("warning");
+      setSnackbarOpen(true);
     }
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbarOpen(false);
   };
 
   return (
@@ -48,6 +79,19 @@ function FormTransaction({ onTransaction }) {
           </Button>
         </Box>
       </Box>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity={alertSeverity}
+          sx={{ width: "100%" }}
+        >
+          {alertMessage}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 }
