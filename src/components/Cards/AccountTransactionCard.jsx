@@ -1,6 +1,13 @@
-import { Box, Divider, Skeleton, Typography } from "@mui/material";
+import {
+  Box,
+  Skeleton,
+  Typography,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
-import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import { numberToString } from "../../Api/utils";
 import { getAccountTransactions } from "../../Api/api";
 
@@ -40,45 +47,50 @@ function AccountTransactionCard({ account }) {
         mt: 2,
         width: 360,
         height: 180,
+        maxHeight: 180,
+        overflow: "hidden",
         boxSizing: "border-box",
         "&:hover": {
           boxShadow: "0px 0px 10px 0px rgba(0, 0, 0, 0.1)",
         },
       }}
     >
-      <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
+      <Typography variant="h6" sx={{ fontWeight: "bold", mb: 0.5 }}>
         Dernières Transactions
       </Typography>
-      <Box>
-        {transactions
-          .filter((value, index, array) => index < 3)
-          .map((transaction, index) => {
-            let color = transaction.type === "outwards" ? "red" : "green";
-            let sign = transaction.type === "outwards" ? "-" : "+";
+      <Box sx={{ maxHeight: 120, overflow: "hidden" }}>
+        <Table>
+          <TableBody>
+            {transactions.slice(0, 4).map((transaction, index) => {
+              let color = transaction.type === "outwards" ? "red" : "green";
+              let sign = transaction.type === "outwards" ? "-" : "+";
 
-            return (
-              <React.Fragment
-                key={`${transaction.label}-${transaction.amount}-${index}`}
-              >
-                <Box sx={{ display: "flex", gap: 2, my: 1 }}>
-                  <Typography sx={{ color: color }}>
+              return (
+                <TableRow
+                  key={`${transaction.label}-${transaction.amount}-${index}`}
+                >
+                  <TableCell
+                    sx={{
+                      textAlign: "left",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      padding: 1,
+                    }}
+                  >
+                    {transaction.label}
+                  </TableCell>
+                  <TableCell
+                    sx={{ textAlign: "right", color: color, padding: 0.5 }}
+                  >
                     {sign} {numberToString(transaction.amount)}{" "}
                     {transaction.currency}
-                  </Typography>
-                  <Typography sx={{ textAlign: "center" }}>
-                    {transaction.label}
-                  </Typography>
-                  <Typography>
-                    <CheckOutlinedIcon
-                      fontSize="small"
-                      sx={{ color: "green" }}
-                    />
-                  </Typography>
-                </Box>
-                {transactions.indexOf(transaction) < 2 ? <Divider /> : <></>}
-              </React.Fragment>
-            );
-          })}
+                  </TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
       </Box>
     </Box>
   );

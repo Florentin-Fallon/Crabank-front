@@ -5,9 +5,12 @@ import {
   TextField,
   Button,
   Snackbar,
-  Alert, Select, MenuItem,
+  Alert,
+  Select,
+  MenuItem,
+  Divider,
 } from "@mui/material";
-import {createTransaction, getCurrentAccount} from "../../Api/api";
+import { createTransaction, getCurrentAccount } from "../../Api/api";
 
 function FormTransaction({ onTransaction }) {
   const [iban, setIban] = useState("");
@@ -20,7 +23,13 @@ function FormTransaction({ onTransaction }) {
 
   const handleTransaction = async () => {
     if (iban && amount && label) {
-      let toSend = { currency, 'fromIban': (await getCurrentAccount()).iban, 'toIban': iban, amount, label }
+      let toSend = {
+        currency,
+        fromIban: (await getCurrentAccount()).iban,
+        toIban: iban,
+        amount,
+        label,
+      };
 
       console.log("Données envoyées :", toSend);
       try {
@@ -50,23 +59,30 @@ function FormTransaction({ onTransaction }) {
   };
 
   return (
-    <Box>
-      <Typography variant="h4" sx={{ fontWeight: "bold", mb: 2 }}>
-        Nouveau virement
-      </Typography>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        ml: 25,
+        mt: 5,
+        gap: 20,
+      }}
+    >
       <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 2,
-          width: "150%",
-        }}
+        sx={{ width: "40%", display: "flex", flexDirection: "column", gap: 2 }}
       >
+        <Typography
+          variant="h5"
+          sx={{ fontWeight: "bold", mb: 2, textAlign: "center" }}
+        >
+          Nouveau virement
+        </Typography>
         <TextField
-            label="Intitulé"
-            variant="outlined"
-            value={label}
-            onChange={(e) => setLabel(e.target.value)}
+          label="Intitulé"
+          variant="outlined"
+          value={label}
+          onChange={(e) => setLabel(e.target.value)}
         />
         <TextField
           label="IBAN du destinataire"
@@ -74,22 +90,22 @@ function FormTransaction({ onTransaction }) {
           value={iban}
           onChange={(e) => setIban(e.target.value)}
         />
-        <Select
-            value={currency}
-            variant="outlined"
-            label="Currency"
-            onChange={(e) => setCurrency(e.target.value)}
-        >
-          <MenuItem value={'USD'}>United States Dollars (USD)</MenuItem>
-          <MenuItem value={'EUR'}>Euros (EUR)</MenuItem>
-          <MenuItem value={'ROBUX'}>Robux (ROBUX)</MenuItem>
-        </Select>
         <TextField
           label="Montant"
           variant="outlined"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
+        <Select
+          value={currency}
+          variant="outlined"
+          label="Currency"
+          onChange={(e) => setCurrency(e.target.value)}
+        >
+          <MenuItem value={"USD"}>United States Dollars (USD)</MenuItem>
+          <MenuItem value={"EUR"}>Euros (EUR)</MenuItem>
+          <MenuItem value={"ROBUX"}>Robux (ROBUX)</MenuItem>
+        </Select>
         <Box>
           <Button
             variant="contained"
@@ -100,6 +116,38 @@ function FormTransaction({ onTransaction }) {
           </Button>
         </Box>
       </Box>
+      <Divider
+        orientation="vertical"
+        variant="middle"
+        sx={{ color: "black", height: "500px", width: "2px" }}
+      />
+      <Box
+        sx={{ width: "40%", display: "flex", flexDirection: "column", gap: 2 }}
+      >
+        <Typography
+          variant="h5"
+          sx={{ fontWeight: "bold", mb: 2, textAlign: "center" }}
+        >
+          Nouveau paiement Paylib
+        </Typography>
+        <TextField label="Intitulé" variant="outlined" />
+        <TextField label="Numéro de téléphone" variant="outlined" />
+        <TextField label="Montant" variant="outlined" />
+        <Select value={currency} variant="outlined" label="Currency">
+          <MenuItem value={"USD"}>United States Dollars (USD)</MenuItem>
+          <MenuItem value={"EUR"}>Euros (EUR)</MenuItem>
+          <MenuItem value={"ROBUX"}>Robux (ROBUX)</MenuItem>
+        </Select>
+        <Box>
+          <Button
+            variant="contained"
+            sx={{ width: "100%", textTransform: "none" }}
+          >
+            Payer avec Paylib
+          </Button>
+        </Box>
+      </Box>
+
       <Snackbar
         open={snackbarOpen}
         autoHideDuration={6000}
