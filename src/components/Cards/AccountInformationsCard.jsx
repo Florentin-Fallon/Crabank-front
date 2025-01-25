@@ -32,8 +32,8 @@ function AccountInformationsCard({ account }) {
       <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
         Informations
       </Typography>
-      <Typography variant="body2">Titulaire du compte</Typography>
-      <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+      <Typography>Titulaire du compte</Typography>
+      <Typography sx={{ fontWeight: "bold", mb: 1.5 }}>
         {account.ownerName}
       </Typography>
       <Typography>Numéro de compte</Typography>
