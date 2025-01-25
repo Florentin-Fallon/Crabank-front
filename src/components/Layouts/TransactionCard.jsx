@@ -6,7 +6,7 @@ function TransactionCard({ transaction }) {
   const sign = transaction.type === "outwards" ? "-" : "+";
 
   return (
-    <Box sx={{ my: 2 }}>
+    <Box sx={{ my: 0 }}>
       <Box
         sx={{
           display: "flex",

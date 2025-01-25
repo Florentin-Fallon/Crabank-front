@@ -52,7 +52,7 @@ function FormTransaction({ onTransaction }) {
   return (
     <Box>
       <Typography variant="h4" sx={{ fontWeight: "bold", mb: 2 }}>
-        Virements
+        Nouveau virement
       </Typography>
       <Box
         sx={{

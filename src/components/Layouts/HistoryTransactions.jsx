@@ -24,7 +24,7 @@ function HistoryTransactions({ account }) {
       <Typography variant="h4" sx={{ fontWeight: "bold", mb: 4 }}>
         Historique des transactions
       </Typography>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+      <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
         {transactions.length > 0 ? (
           transactions.map((transaction) => (
             <TransactionCard key={transaction.id} transaction={transaction} />
