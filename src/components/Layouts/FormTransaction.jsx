@@ -17,6 +17,7 @@ function FormTransaction({ onTransaction }) {
   const [amount, setAmount] = useState("");
   const [label, setLabel] = useState("");
   const [currency, setCurrency] = useState("USD");
+  const [currencyPaylib, setCurrencyPaylib] = useState("USD");
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [alertSeverity, setAlertSeverity] = useState("success");
@@ -97,10 +98,10 @@ function FormTransaction({ onTransaction }) {
           onChange={(e) => setAmount(e.target.value)}
         />
         <Select
-          value={currency}
+          value={currencyPaylib}
           variant="outlined"
           label="Currency"
-          onChange={(e) => setCurrency(e.target.value)}
+          onChange={(e) => setCurrencyPaylib(e.target.value)}
         >
           <MenuItem value={"USD"}>United States Dollars (USD)</MenuItem>
           <MenuItem value={"EUR"}>Euros (EUR)</MenuItem>

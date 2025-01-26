@@ -44,7 +44,7 @@ function CardCreationLayout({ account, setValue }) {
       setAlertMessage("Erreur lors de la création de la carte !");
       setAlertSeverity("error");
     } finally {
-      setValue(0);
+      setValue("0");
     }
   };
 
