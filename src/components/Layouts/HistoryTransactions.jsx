@@ -92,7 +92,7 @@ function HistoryTransactions({ account }) {
                       </TableCell>
                       <TableCell sx={{ textAlign: "center" }}>
                         <Typography sx={{ color: color }}>
-                          {sign} {transaction.amount} {transaction.currency}
+                          {sign} {numberToString(transaction.amount)} {transaction.currency}
                         </Typography>
                       </TableCell>
                     </TableRow>
