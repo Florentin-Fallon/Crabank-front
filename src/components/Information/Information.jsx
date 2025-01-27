@@ -1,4 +1,5 @@
 import {Box, colors, Typography} from "@mui/material";
+import {numberToString} from "../../Api/utils";
 
 export function Information({account}) {
     return (
@@ -8,7 +9,10 @@ export function Information({account}) {
         }}>
             <Typography sx={{
                 textAlign: "left",
-            }} variant="h3">Informations</Typography>
+                fontWeight: "bold"
+            }} variant="h4"
+            >Informations
+            </Typography>
             <Box sx={{
                 display: "flex",
                 marginTop: "25px",
@@ -24,10 +28,9 @@ export function Information({account}) {
                     p: 2,
                 }}>
                     <Typography variant={"h6"}>Informations personnelles</Typography>
-                    <Typography sx={{marginTop: "20px"}}>Nom complet :</Typography>
+                    <Typography sx={{marginTop: "20px"}}>Nom complet : {account.ownerName}</Typography>
                     <Typography>Numéro de téléphone : 01 23 45 67 89</Typography>
-                    <Typography>Adresse e-mail : </Typography>
-                    <Typography>Date de naissance :</Typography>
+                    <Typography>Adresse e-mail : {account.ownerEmail}</Typography>
                 </Box>
                 <Box sx={{
                     display: "flex",
@@ -38,10 +41,10 @@ export function Information({account}) {
                     p: 2,
                 }}>
                     <Typography variant={"h6"}>Informations de compte</Typography>
-                    <Typography sx={{marginTop: "20px"}}>Numéro de compte :</Typography>
-                    <Typography>Numéro de carte :</Typography>
-                    <Typography>Plafond bancaire : {account.creditLimit}</Typography>
-                    <Typography>Conseiller :</Typography>
+                    <Typography sx={{marginTop: "20px"}}>Numéro de compte : {account.bban}</Typography>
+                    <Typography>IBAN : {account.iban}</Typography>
+                    <Typography>Plafond bancaire : {numberToString(account.creditLimit)} {account.currency}</Typography>
+                    <Typography>Conseiller : {account.advisor.firstName} {account.advisor.lastName}</Typography>
                 </Box>
             </Box>
             <Box sx={{
@@ -59,7 +62,8 @@ export function Information({account}) {
                     p: 2,
                 }}>
                     <Typography variant={"h6"}>Informations financières</Typography>
-                    <Typography sx={{marginTop: "20px"}}>Solde actuel : {account.amount} {account.currency}</Typography>
+                    <Typography sx={{marginTop: "20px"}}>Solde actuel
+                        : {numberToString(account.amount)} {account.currency}</Typography>
                     <Typography>Découvert : <span style={{color: "green"}}>Autorisé</span></Typography>
                     <Typography>Taux d'intérêt : -2%</Typography>
                 </Box>

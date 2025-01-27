@@ -1,5 +1,6 @@
 import { Box, Skeleton, Typography } from "@mui/material";
 import React from "react";
+import {numberToString} from "../../Api/utils";
 
 function AccountCreditLimitCard({ account }) {
   if (account === undefined) {
@@ -36,7 +37,7 @@ function AccountCreditLimitCard({ account }) {
         {account.currency}
       </Typography>
       <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-        50 000 {account.currency}
+          {numberToString(account.creditLimit)} {account.currency}
       </Typography>
     </Box>
   );

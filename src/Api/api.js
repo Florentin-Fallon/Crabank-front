@@ -1,5 +1,5 @@
 const BASE_URL =
-  "https://ffbb-2a01-e0a-2bf-3d30-1b78-1dc8-a6dc-e6b2.ngrok-free.app"; // Replace with the actual base URL of the API
+  "https://6a0b-195-7-117-146.ngrok-free.app"; // Replace with the actual base URL of the API
 
 /**
  * Helper function to send HTTP requests.
